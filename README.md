@@ -1,7 +1,7 @@
-## dockerfile-from-image
-[![](https://badge.imagelayers.io/eripa/dockerfile-from-image.svg)](https://imagelayers.io/?images=eripa/dockerfile-from-image:latest 'Get your own badge on imagelayers.io')
+## armhf-dockerfile-from-image
+[![](https://badge.imagelayers.io/eripa/armhf-dockerfile-from-image.svg)](https://imagelayers.io/?images=eripa/armhf-dockerfile-from-image:latest 'Get your own badge on imagelayers.io')
 
-Reverse-engineers a Dockerfile from a Docker image, on ARM platforms. If you are looking for amd64, please see [the original repository](https://github.com/CenturyLinkLabs/dockerfile-from-image).
+Reverse-engineers a Dockerfile from a Docker image, on ARM platforms. If you are looking for amd64, please see [the original authors repository](https://github.com/CenturyLinkLabs/dockerfile-from-image).
 
 Similar to how the `docker history` command works, the *dockerfile-from-image*
 script is able to re-create the Dockerfile ([approximately](#limitations)) that
