@@ -1,7 +1,7 @@
 ## dockerfile-from-image
-[![](https://badge.imagelayers.io/centurylink/dockerfile-from-image.svg)](https://imagelayers.io/?images=centurylink/dockerfile-from-image:latest 'Get your own badge on imagelayers.io')
+[![](https://badge.imagelayers.io/eripa/dockerfile-from-image.svg)](https://imagelayers.io/?images=eripa/dockerfile-from-image:latest 'Get your own badge on imagelayers.io')
 
-Reverse-engineers a Dockerfile from a Docker image.
+Reverse-engineers a Dockerfile from a Docker image, on ARM platforms. If you are looking for amd64, please see [the original repository](https://github.com/CenturyLinkLabs/dockerfile-from-image).
 
 Similar to how the `docker history` command works, the *dockerfile-from-image*
 script is able to re-create the Dockerfile ([approximately](#limitations)) that
@@ -10,11 +10,11 @@ each image layer.
 
 ### Usage
 
-The Ruby *dockerfile-from-image* script is itself packaged as a [Docker image](https://registry.hub.docker.com/u/centurylink/dockerfile-from-image/)
+The Ruby *dockerfile-from-image* script is itself packaged as a [Docker image](https://registry.hub.docker.com/u/eripa/armhf-dockerfile-from-image/)
 so it can easily be executed with the Docker *run* command:
 
     docker run -v /var/run/docker.sock:/var/run/docker.sock \
-      centurylink/dockerfile-from-image <IMAGE_TAG_OR_ID>
+      eripa/armhf-dockerfile-from-image <IMAGE_TAG_OR_ID>
 
 The `<IMAGE_TAG_OR_ID>` parameter can be either an image tag (e.g. `ruby`) or
 an image ID (either the truncated form or the complete image ID).
@@ -36,12 +36,12 @@ the Dockerfile for that image being generated.
     $ docker pull ruby
     Pulling repository ruby
 
-    $ docker run --rm -v /run/docker.sock:/run/docker.sock centurylink/dockerfile-from-image
+    $ docker run --rm -v /run/docker.sock:/run/docker.sock eripa/armhf-dockerfile-from-image
     Usage: dockerfile-from-image.rb [options] <image_id>
         -f, --full-tree                  Generate Dockerfile for all parent layers
         -h, --help                       Show this message
 
-    $ docker run --rm -v /run/docker.sock:/run/docker.sock centurylink/dockerfile-from-image ruby
+    $ docker run --rm -v /run/docker.sock:/run/docker.sock eripa/armhf-dockerfile-from-image ruby
     FROM buildpack-deps:latest
     RUN useradd -g users user
     RUN apt-get update && apt-get install -y bison procps
@@ -65,8 +65,8 @@ the Dockerfile for that image being generated.
 ### Run it as local command
 
 ```
-$ docker pull centurylink/dockerfile-from-image
-$ alias dfimage="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock centurylink/dockerfile-from-image"
+$ docker pull eripa/armhf-dockerfile-from-image
+$ alias dfimage="docker run --rm -v /var/run/docker.sock:/var/run/docker.sock eripa/armhf-dockerfile-from-image"
 $ dfimage --help
 Usage: dockerfile-from-image.rb [options] <image_id>
     -f, --full-tree                  Generate Dockerfile for all parent layers
